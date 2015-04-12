@@ -1,8 +1,5 @@
 #!/bin/bash
-echo "HALLA";
-ETCDFIRST="$(env  | grep ETCD2 | grep -oe '[^=]*$')";
-echo "HALLI";
-echo $ETCDFIRST;
-echo "HALLo";
 sed -e "s|#ETCDSERVER1#|$(env  | grep ETCD1 | grep -oe '[^=]*$')|g" -e "s|#ETCDSERVER2#|$(env  | grep ETCD2 | grep -oe '[^=]*$')|g" -e "s|#ETCDSERVER3#|$(env  | grep ETCD3 | grep -oe '[^=]*$')|g" etcdproxy.conf > final.conf
 
+cat /scripts/final.conf 
+/usr/sbin/haproxy -V -f /scripts/final.conf
